@@ -88,11 +88,7 @@
 
 // ---------- functional programming
 
-const array = [7.5, 8, 6.5, 0, 8.5, 4, 0];
-
-// function totalWorkWeek(total) {
-//   return total.reduce((acc, curr) => acc + curr);
-// }
+const array = [7.5, 8.5, 6.5, 0, 8.5, 4, 0];
 
 function analyzeWorkWeek(arr) {
   // total work hours
@@ -102,6 +98,9 @@ function analyzeWorkWeek(arr) {
   // average daily hours
   const averageDailyHours = (totalWorkHours / 7).toFixed(2);
   console.log(`Average daily hours: ${minutes(averageDailyHours)}`);
+
+  // The day with the most hours worked
+  dayMostHours(arr);
 }
 
 // function that turns numbers into hours and minutes
@@ -109,6 +108,28 @@ function minutes(number) {
   const fullHours = Math.floor(Number(number));
   const remainingMinutes = Math.round((number - fullHours) * 60);
   return `${fullHours}h ${remainingMinutes}min`;
+}
+
+// function that analyze which day has most hours
+function dayMostHours(arr) {
+  let days = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
+  const day = arr.reduce((acc, curr) => (acc > curr ? acc : curr));
+  let maxDay = [];
+  arr.forEach((hour, index) => {
+    if (hour === day) {
+      maxDay.push(days[index]);
+    }
+  });
+  const stringed = maxDay.join(', ');
+  console.log(`The day with most hours done: ${stringed} - ${minutes(day)}`);
 }
 
 analyzeWorkWeek(array);
