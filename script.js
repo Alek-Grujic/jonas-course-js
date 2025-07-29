@@ -90,6 +90,7 @@
 
 const array = [7.5, 8.5, 6.5, 0, 8.5, 4, 0];
 
+// main function
 function analyzeWorkWeek(arr) {
   // total work hours
   const totalWorkHours = arr.reduce((acc, curr) => acc + curr);
@@ -101,6 +102,16 @@ function analyzeWorkWeek(arr) {
 
   // The day with the most hours worked
   dayMostHours(arr);
+
+  // number of days worked
+  let countDays = 0;
+  arr.forEach(num => {
+    if (num !== 0) {
+      countDays += 1;
+    }
+  });
+  // const countDays = arr.filter(num => num !== 0).length;
+  console.log(`Days worked in a week: ${countDays}`);
 }
 
 // function that turns numbers into hours and minutes
