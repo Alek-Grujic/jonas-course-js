@@ -88,7 +88,7 @@
 
 // ---------- functional programming
 
-const array = [7.5, 8.5, 6.5, 0, 8.5, 4, 0];
+const array = [7.5, 5.5, 6.5, 0, 8.5, 4, 0];
 
 // main function
 function analyzeWorkWeek(arr) {
@@ -112,6 +112,12 @@ function analyzeWorkWeek(arr) {
   });
   // const countDays = arr.filter(num => num !== 0).length;
   console.log(`Days worked in a week: ${countDays}`);
+
+  // if the week was full-time(worked 35 hour or more)
+  if (totalWorkHours >= 35)
+    console.log(`This week was full-time with ${minutes(totalWorkHours)}`);
+  else
+    console.log(`This week wasnt full-time. Hours: ${minutes(totalWorkHours)}`);
 }
 
 // function that turns numbers into hours and minutes
